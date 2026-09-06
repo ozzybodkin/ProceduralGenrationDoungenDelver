@@ -225,7 +225,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -350,6 +350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1629632109}
   - component: {fileID: 1629632108}
+  - component: {fileID: 1629632110}
   m_Layer: 0
   m_Name: MapGenerator
   m_TagString: Untagged
@@ -380,6 +381,7 @@ MonoBehaviour:
   - {fileID: -6247416355258616173, guid: bf276f68671ab6441ad2bb73328151e0, type: 3}
   gridComponents: []
   cellObj: {fileID: 218963756720778184, guid: 6cae964b0f577ae41a8f3344144c438b, type: 3}
+  player: {fileID: 7584532866801662252, guid: 3b6ac4f4e9fdd2d4988ed23424aa1cbb, type: 3}
 --- !u!4 &1629632109
 Transform:
   m_ObjectHideFlags: 0
@@ -389,12 +391,74 @@ Transform:
   m_GameObject: {fileID: 1629632107}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.20529, y: 0.17357, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1629632110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629632107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 2c1c6dbe5ec7d184286a7320a26613f0, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1629632108}
+        m_TargetAssemblyTypeName: WaveFunction, Assembly-CSharp
+        m_MethodName: ResetBoard
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d01640d9-90d5-4b4e-aa16-a9a6187a45c9
+    m_ActionName: 'Dev_Tools/Reset[/Keyboard/r]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9bba425f-0cfa-42e8-a83b-e82b8589a385
+    m_ActionName: 'PlayerInputMap/Up[/Keyboard/w]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: db893a24-de3c-4080-a8b0-b8558f97f4d9
+    m_ActionName: 'PlayerInputMap/Down[/Keyboard/s]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a9bb43f6-f56b-484c-ad6a-833ff12bc2f8
+    m_ActionName: 'PlayerInputMap/Left[/Keyboard/a]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a911c6c7-77e8-475c-9d0b-8811e730c5ac
+    m_ActionName: 'PlayerInputMap/Right[/Keyboard/d]'
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Dev_Tools
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 519420031}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,6 +14,10 @@ public class WaveFunction : MonoBehaviour
     public List<Cell> gridComponents;
     public Cell cellObj;
 
+    public GameObject player;
+
+    private int currentScene;
+
     int iterations = 0;
 
     private void Awake()
@@ -20,9 +26,24 @@ public class WaveFunction : MonoBehaviour
         InitilizeGrid();
     }
 
+    private void Start()
+    {
+        Instantiate(player, new Vector3(0, 0, 0), Quaternion.identity);
+    }
+
+    public void ResetBoard(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            currentScene = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(currentScene);
+        }
+    }
+
     private void InitilizeGrid()
     {
         Camera.main.transform.position = new Vector3(dimensions/2, dimensions/2, -10);
+        Camera.main.orthographicSize = dimensions/2 + 1;
 
         for (int y = 0; y < dimensions; y++)
         {
@@ -39,7 +60,6 @@ public class WaveFunction : MonoBehaviour
 
     private IEnumerator CheckEntropy()
     {
-        Debug.Log("test1");
         List<Cell> tempGrid = new List<Cell>(gridComponents);
 
         tempGrid.RemoveAll(c => c.collapsed);
@@ -64,8 +84,6 @@ public class WaveFunction : MonoBehaviour
         }
 
         yield return new WaitForSeconds(0.01f);
-
-        Debug.Log("test2");
 
         CollapseCell(tempGrid);
     }
