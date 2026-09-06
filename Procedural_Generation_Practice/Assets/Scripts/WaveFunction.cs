@@ -22,6 +22,8 @@ public class WaveFunction : MonoBehaviour
 
     private void InitilizeGrid()
     {
+        Camera.main.transform.position = new Vector3(dimensions/2, dimensions/2, -10);
+
         for (int y = 0; y < dimensions; y++)
         {
             for (int x = 0; x < dimensions; x++)
