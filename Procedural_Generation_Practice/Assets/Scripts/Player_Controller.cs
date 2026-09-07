@@ -3,14 +3,20 @@ using UnityEngine.InputSystem;
 
 public class Player_Controller : MonoBehaviour
 {
+    private bool canMove = false;
+    public bool mapGenerated = false;
     public void Up(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            Collider2D checker = Physics2D.OverlapBox(new Vector2(transform.position.x, transform.position.y + 1), new Vector2(0.4f,0.4f), 0f);
-            if (checker != null)
+            if (mapGenerated == true)
             {
-                transform.position = transform.position + new Vector3(0, 1, 0);
+                Collider2D checker = Physics2D.OverlapBox(new Vector2(transform.position.x, transform.position.y + 1), new Vector2(0.4f, 0.4f), 0f);
+                CollisionChecker(checker);
+                if (checker != null && canMove == true)
+                {
+                    transform.position = transform.position + new Vector3(0, 1, 0);
+                }
             }
         }
     }
@@ -19,23 +25,30 @@ public class Player_Controller : MonoBehaviour
     {
         if (context.started)
         {
-            Collider2D checker = Physics2D.OverlapBox(new Vector2(transform.position.x, transform.position.y - 1), new Vector2(0.4f, 0.4f), 0f);
-            if (checker != null)
+            if (mapGenerated == true)
             {
-                transform.position = transform.position + new Vector3(0, -1, 0);
+                Collider2D checker = Physics2D.OverlapBox(new Vector2(transform.position.x, transform.position.y - 1), new Vector2(0.4f, 0.4f), 0f);
+                CollisionChecker(checker);
+                if (checker != null && canMove == true)
+                {
+                    transform.position = transform.position + new Vector3(0, -1, 0);
+                }
             }
         }
-
     }
 
     public void Left(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            Collider2D checker = Physics2D.OverlapBox(new Vector2(transform.position.x - 1, transform.position.y), new Vector2(0.4f, 0.4f), 0f);
-            if (checker != null)
+            if (mapGenerated == true)
             {
-                transform.position = transform.position + new Vector3(-1, 0, 0);
+                Collider2D checker = Physics2D.OverlapBox(new Vector2(transform.position.x - 1, transform.position.y), new Vector2(0.4f, 0.4f), 0f);
+                CollisionChecker(checker);
+                if (checker != null && canMove == true)
+                {
+                    transform.position = transform.position + new Vector3(-1, 0, 0);
+                }
             }
         }
     }
@@ -44,11 +57,29 @@ public class Player_Controller : MonoBehaviour
     {
         if (context.started)
         {
-            Collider2D checker = Physics2D.OverlapBox(new Vector2(transform.position.x + 1, transform.position.y), new Vector2(0.4f, 0.4f), 0f);
-            if (checker != null)
+            if (mapGenerated == true)
             {
-                transform.position = transform.position + new Vector3(1, 0, 0);
+                Collider2D checker = Physics2D.OverlapBox(new Vector2(transform.position.x + 1, transform.position.y), new Vector2(0.4f, 0.4f), 0f);
+                CollisionChecker(checker);
+                if (checker != null && canMove == true)
+                {
+                    transform.position = transform.position + new Vector3(1, 0, 0);
+                }
             }
+        }
+    }
+
+    private void CollisionChecker(Collider2D checker)
+    {
+        string tag = checker.gameObject.tag;
+        Debug.Log(tag);
+        if (tag == "water")
+        {
+            canMove = false;
+        }
+        else
+        {
+            canMove = true;
         }
     }
 }

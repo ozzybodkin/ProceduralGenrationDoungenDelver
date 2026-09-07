@@ -15,10 +15,12 @@ public class WaveFunction : MonoBehaviour
     public Cell cellObj;
 
     public GameObject player;
+    private GameObject activePlayer;
+    private Player_Controller playerController;
 
     private int currentScene;
 
-    int iterations = 0;
+    private int iterations = 0;
 
     private void Awake()
     {
@@ -28,7 +30,8 @@ public class WaveFunction : MonoBehaviour
 
     private void Start()
     {
-        Instantiate(player, new Vector3(0, 0, 0), Quaternion.identity);
+        activePlayer = Instantiate(player, new Vector3(0, dimensions-1, 0), Quaternion.identity);
+        playerController = activePlayer.GetComponent<Player_Controller>();
     }
 
     public void ResetBoard(InputAction.CallbackContext context)
@@ -209,6 +212,10 @@ public class WaveFunction : MonoBehaviour
         if (iterations < dimensions * dimensions)
         {
             StartCoroutine(CheckEntropy());
+        }
+        else
+        {
+            playerController.mapGenerated = true;
         }
     }
 
