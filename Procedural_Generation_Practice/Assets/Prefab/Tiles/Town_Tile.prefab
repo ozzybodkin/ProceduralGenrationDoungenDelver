@@ -105,22 +105,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4144e3565bb574fb9c83860560243e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tile
-  upNeighbours:
-  - {fileID: -8801249495843898051, guid: 97fbee3938af8f44c89ee2d7c0ec96c2, type: 3}
-  - {fileID: -7713584289210454324, guid: 91614f22ad2732040ac7ebe8056b12f0, type: 3}
-  - {fileID: -5138473603677047960}
-  downNeighbours:
-  - {fileID: -8801249495843898051, guid: 97fbee3938af8f44c89ee2d7c0ec96c2, type: 3}
-  - {fileID: -7713584289210454324, guid: 91614f22ad2732040ac7ebe8056b12f0, type: 3}
-  - {fileID: -5138473603677047960}
-  leftNeighbours:
-  - {fileID: -7713584289210454324, guid: 91614f22ad2732040ac7ebe8056b12f0, type: 3}
-  - {fileID: -8801249495843898051, guid: 97fbee3938af8f44c89ee2d7c0ec96c2, type: 3}
-  - {fileID: -5138473603677047960}
-  rightNeighbours:
-  - {fileID: -7713584289210454324, guid: 91614f22ad2732040ac7ebe8056b12f0, type: 3}
-  - {fileID: -8801249495843898051, guid: 97fbee3938af8f44c89ee2d7c0ec96c2, type: 3}
-  - {fileID: -5138473603677047960}
+  upNeighbours: []
+  downNeighbours: []
+  leftNeighbours: []
+  rightNeighbours: []
+  allTiles: []
+  uSocket: 0
+  dSocket: 0
+  lSocket: 0
+  rSocket: 0
 --- !u!61 &-7591041185695446812
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -105,16 +105,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4144e3565bb574fb9c83860560243e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tile
-  upNeighbours:
-  - {fileID: 7358306117937083893, guid: edd031dac4c12f14daa54bd0226d969f, type: 3}
-  - {fileID: -3948884043930187511}
-  downNeighbours:
-  - {fileID: -3948884043930187511}
-  - {fileID: -7448276452102739702, guid: ec8b08b9399c13d4084abdecb10e395e, type: 3}
-  leftNeighbours:
-  - {fileID: -3948884043930187511}
-  rightNeighbours:
-  - {fileID: -3948884043930187511}
+  upNeighbours: []
+  downNeighbours: []
+  leftNeighbours: []
+  rightNeighbours: []
+  allTiles: []
+  uSocket: 1
+  dSocket: 1
+  lSocket: 1
+  rSocket: 1
 --- !u!61 &5796627055737363104
 BoxCollider2D:
   m_ObjectHideFlags: 0

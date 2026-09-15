@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &7439503397990753241
+--- !u!1 &6178227166962676457
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8945640891355568710}
-  - component: {fileID: 3870944522835059917}
-  - component: {fileID: -7713584289210454324}
-  - component: {fileID: -8805937089330269411}
+  - component: {fileID: 2021008959218824827}
+  - component: {fileID: 8132186904587767087}
+  - component: {fileID: -7448276452102739702}
+  - component: {fileID: -8080021496590077216}
   m_Layer: 0
-  m_Name: Grass_Tile
+  m_Name: ULR
   m_TagString: ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8945640891355568710
+--- !u!4 &2021008959218824827
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7439503397990753241}
+  m_GameObject: {fileID: 6178227166962676457}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.289467, y: -3.150709, z: 0}
+  m_LocalPosition: {x: -1.67, y: 2.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &3870944522835059917
+--- !u!212 &8132186904587767087
 SpriteRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7439503397990753241}
+  m_GameObject: {fileID: 6178227166962676457}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 5441223297315994465, guid: 186ab8b840cfda849818c4ce6f6a1c12, type: 3}
+  m_Sprite: {fileID: 1916811666, guid: 186ab8b840cfda849818c4ce6f6a1c12, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -93,42 +93,34 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &-7713584289210454324
+--- !u!114 &-7448276452102739702
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7439503397990753241}
+  m_GameObject: {fileID: 6178227166962676457}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ca4144e3565bb574fb9c83860560243e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tile
-  upNeighbours:
-  - {fileID: -8801249495843898051, guid: 97fbee3938af8f44c89ee2d7c0ec96c2, type: 3}
-  - {fileID: -5138473603677047960, guid: 3d82ea1816ea48a4dae85fefca6832f6, type: 3}
-  - {fileID: -7713584289210454324}
-  downNeighbours:
-  - {fileID: 7358306117937083893, guid: edd031dac4c12f14daa54bd0226d969f, type: 3}
-  - {fileID: -7713584289210454324}
-  - {fileID: -8801249495843898051, guid: 97fbee3938af8f44c89ee2d7c0ec96c2, type: 3}
-  - {fileID: -5138473603677047960, guid: 3d82ea1816ea48a4dae85fefca6832f6, type: 3}
-  leftNeighbours:
-  - {fileID: -7713584289210454324}
-  - {fileID: -8801249495843898051, guid: 97fbee3938af8f44c89ee2d7c0ec96c2, type: 3}
-  - {fileID: -5138473603677047960, guid: 3d82ea1816ea48a4dae85fefca6832f6, type: 3}
-  rightNeighbours:
-  - {fileID: -7713584289210454324}
-  - {fileID: -8801249495843898051, guid: 97fbee3938af8f44c89ee2d7c0ec96c2, type: 3}
-  - {fileID: -5138473603677047960, guid: 3d82ea1816ea48a4dae85fefca6832f6, type: 3}
---- !u!61 &-8805937089330269411
+  upNeighbours: []
+  downNeighbours: []
+  leftNeighbours: []
+  rightNeighbours: []
+  allTiles: []
+  uSocket: 1
+  dSocket: 3
+  lSocket: 5
+  rSocket: 5
+--- !u!61 &-8080021496590077216
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7439503397990753241}
+  m_GameObject: {fileID: 6178227166962676457}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1

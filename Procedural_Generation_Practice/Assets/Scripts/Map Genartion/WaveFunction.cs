@@ -86,6 +86,11 @@ public class WaveFunction : MonoBehaviour
         Camera.main.transform.position = new Vector3(dimensions/2, dimensions/2, -10);
         Camera.main.orthographicSize = dimensions/2 + 1;
 
+        for (int i = 0; i < tileObjects.Length; i++)
+        {
+            tileObjects[i].SetNeighbours();
+        }
+
         for (int y = 0; y < dimensions; y++)
         {
             for (int x = 0; x < dimensions; x++)
