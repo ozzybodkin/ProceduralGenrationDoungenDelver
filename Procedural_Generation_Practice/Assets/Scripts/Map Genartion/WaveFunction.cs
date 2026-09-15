@@ -22,6 +22,20 @@ public class WaveFunction : MonoBehaviour
 
     private int iterations = 0;
 
+    private int numTown = 0;
+    private int numGround = 0;
+    private int numMarket = 0;
+    private int numWater = 0;
+
+    private int maxNumTown;
+    private int maxNumGround;
+    private int maxNumWater;
+    private int maxNumMarket;
+
+    private bool townTilesFull = false;
+    private bool groundTilesFull = false;
+    private bool waterTilesFull = false;
+    private bool marketTilesFull = false;
     private void Awake()
     {
         gridComponents = new List<Cell>();
@@ -32,6 +46,30 @@ public class WaveFunction : MonoBehaviour
     {
         activePlayer = Instantiate(player, new Vector3(0, dimensions-1, 0), Quaternion.identity);
         playerController = activePlayer.GetComponent<Player_Controller>();
+
+        float dimensionsF = (float)dimensions * dimensions;
+
+        maxNumTown = Mathf.RoundToInt(dimensionsF * 0.1f);
+
+        maxNumGround = Mathf.RoundToInt(dimensionsF * 0.5f);
+
+        maxNumWater = Mathf.RoundToInt(dimensionsF * 0.3f);
+
+        maxNumMarket = Mathf.RoundToInt(dimensionsF * 0.1f);
+
+        int numTiles = maxNumTown + maxNumGround + maxNumMarket + maxNumWater;
+        int area = dimensions * dimensions;
+
+        if (numTiles > area)
+        {
+            int differance = numTiles - area;
+            maxNumGround -= differance;
+        }
+        else if (numTiles < area)
+        {
+            int differance = area - numTiles;
+            maxNumGround += differance;
+        }
     }
 
     public void ResetBoard(InputAction.CallbackContext context)
@@ -67,7 +105,7 @@ public class WaveFunction : MonoBehaviour
 
         tempGrid.RemoveAll(c => c.collapsed);
 
-        tempGrid.Sort((a,b) => { return a.possibleTiles.Length - b.possibleTiles.Length; });
+        tempGrid.Sort((a, b) => { return a.possibleTiles.Length - b.possibleTiles.Length; });
 
         int arrLength = tempGrid[0].possibleTiles.Length;
         int stopIndex = default;
@@ -104,7 +142,40 @@ public class WaveFunction : MonoBehaviour
         Tile foundTile = cellToCollapse.possibleTiles[0];
         Instantiate(foundTile, cellToCollapse.transform.position, Quaternion.identity);
 
-        UpdateGeneartion();
+        if (foundTile.tag == "town")
+        {
+            numTown++;
+            if (numTown == maxNumTown)
+            {
+                townTilesFull = true;
+            }
+        }
+        else if (foundTile.tag == "ground")
+        {
+            numGround++;
+            if (numGround == maxNumGround)
+            {
+                groundTilesFull = true;
+            }
+        }
+        else if (foundTile.tag == "market")
+        {
+            numMarket++;
+            if (numMarket == maxNumMarket)
+            {
+                marketTilesFull = true;
+            }
+        }
+        else if (foundTile.tag == "water")
+        {
+            numWater++;
+            if (numWater == maxNumWater)
+            {
+                waterTilesFull = true;
+            }
+        }
+
+            UpdateGeneartion();
     }
 
     private void UpdateGeneartion()
@@ -194,6 +265,50 @@ public class WaveFunction : MonoBehaviour
                     }
 
                     Tile[] newTileList = new Tile[options.Count];
+
+                    if (townTilesFull)
+                    {
+                        for (int i = 0; i < options.Count; i++)
+                        {
+                            if (options[i].tag == "town")
+                            {
+                                options.Remove(options[i]);
+                            }
+                        }
+                    }
+
+                    if (groundTilesFull)
+                    {
+                        for (int i = 0; i < options.Count; i++)
+                        {
+                            if (options[i].tag == "ground")
+                            {
+                                options.Remove(options[i]);
+                            }
+                        }
+                    }
+
+                    if (waterTilesFull)
+                    {
+                        for (int i = 0; i < options.Count; i++)
+                        {
+                            if (options[i].tag == "water")
+                            {
+                                options.Remove(options[i]);
+                            }
+                        }
+                    }
+
+                    if (marketTilesFull)
+                    {
+                        for (int i = 0; i < options.Count; i++)
+                        {
+                            if (options[i].tag == "market")
+                            {
+                                options.Remove(options[i]);
+                            }
+                        }
+                    }
 
                     for (int i = 0; i < options.Count; i++)
                     {
