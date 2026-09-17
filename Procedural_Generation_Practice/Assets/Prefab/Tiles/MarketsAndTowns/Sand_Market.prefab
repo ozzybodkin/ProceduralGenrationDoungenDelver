@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2787523817405016648}
   - component: {fileID: 6560063055803859957}
   - component: {fileID: -4602032251718830987}
+  - component: {fileID: 1451107206132018391}
   m_Layer: 0
   m_Name: Sand_Market
   m_TagString: market
@@ -104,11 +105,77 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4144e3565bb574fb9c83860560243e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tile
-  upNeighbours: []
-  downNeighbours: []
-  leftNeighbours: []
-  rightNeighbours: []
+  upNeighbours:
+  - {fileID: 7358306117937083893, guid: edd031dac4c12f14daa54bd0226d969f, type: 3}
+  - {fileID: -3948884043930187511, guid: 96fe46b01704683499f83ddbb2728d56, type: 3}
+  - {fileID: -9029821362452841839, guid: 135892111a0a5df418d41a111ee21fad, type: 3}
+  - {fileID: -4602032251718830987}
+  - {fileID: -3984501429462784783, guid: 0286601a67f57844d9d4c94e4cbf2675, type: 3}
+  downNeighbours:
+  - {fileID: -3948884043930187511, guid: 96fe46b01704683499f83ddbb2728d56, type: 3}
+  - {fileID: -7448276452102739702, guid: ec8b08b9399c13d4084abdecb10e395e, type: 3}
+  - {fileID: -7354872056463883490, guid: e9175832997c3aa47953a109996a490d, type: 3}
+  - {fileID: -4602032251718830987}
+  - {fileID: -3984501429462784783, guid: 0286601a67f57844d9d4c94e4cbf2675, type: 3}
+  leftNeighbours:
+  - {fileID: -3948884043930187511, guid: 96fe46b01704683499f83ddbb2728d56, type: 3}
+  - {fileID: 648392604390049052, guid: 706ee92ac6d8e1b4085c7c9350f7c799, type: 3}
+  - {fileID: 512116470488327027, guid: 25e95a27af3d6e34089a88e5ea44995d, type: 3}
+  - {fileID: -4602032251718830987}
+  - {fileID: -3984501429462784783, guid: 0286601a67f57844d9d4c94e4cbf2675, type: 3}
+  rightNeighbours:
+  - {fileID: -3948884043930187511, guid: 96fe46b01704683499f83ddbb2728d56, type: 3}
+  - {fileID: -6853594737073087255, guid: 0eef8d528c013234e8bacdcf0e436ddf, type: 3}
+  - {fileID: 2978112547541852416, guid: 391f9b1cf04040844b3012d3560dabc2, type: 3}
+  - {fileID: -4602032251718830987}
+  - {fileID: -3984501429462784783, guid: 0286601a67f57844d9d4c94e4cbf2675, type: 3}
   uSocket: 1
   dSocket: 1
   lSocket: 1
   rSocket: 1
+--- !u!61 &1451107206132018391
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5535355895503736055}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0

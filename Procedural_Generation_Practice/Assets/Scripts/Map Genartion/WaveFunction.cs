@@ -51,9 +51,9 @@ public class WaveFunction : MonoBehaviour
 
         maxNumTown = Mathf.RoundToInt(dimensionsF * 0.05f);
 
-        maxNumGround = Mathf.RoundToInt(dimensionsF * 0.6f);
+        maxNumGround = Mathf.RoundToInt(dimensionsF * 0.8f);
 
-        maxNumWater = Mathf.RoundToInt(dimensionsF * 0.3f);
+        maxNumWater = Mathf.RoundToInt(dimensionsF * 0.1f);
 
         maxNumMarket = Mathf.RoundToInt(dimensionsF * 0.05f);
 
@@ -149,9 +149,17 @@ public class WaveFunction : MonoBehaviour
         int randIndex = UnityEngine.Random.Range(0, tempGrid.Count);
 
         Cell cellToCollapse = tempGrid[randIndex];
-
         cellToCollapse.collapsed = true;
-        Tile selectedTile = cellToCollapse.possibleTiles[UnityEngine.Random.Range(0, cellToCollapse.possibleTiles.Length)];
+
+        int randSelectedTile = UnityEngine.Random.Range(0, cellToCollapse.possibleTiles.Length);
+
+        if (randSelectedTile > cellToCollapse.possibleTiles.Length)
+        {
+            CollapseCell(tempGrid);
+        }
+
+        Tile selectedTile = cellToCollapse.possibleTiles[UnityEngine.Random.Range(0, randSelectedTile)];
+
         cellToCollapse.possibleTiles = new Tile[] { selectedTile };
 
         Tile foundTile = cellToCollapse.possibleTiles[0];

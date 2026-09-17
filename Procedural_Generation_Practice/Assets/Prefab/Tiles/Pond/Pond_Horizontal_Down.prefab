@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6898004775167269813}
   - component: {fileID: 3556062899376820440}
   - component: {fileID: 3871013564495111099}
+  - component: {fileID: 8875798862988478484}
   m_Layer: 0
   m_Name: Pond_Horizontal_Down
   m_TagString: water
@@ -104,11 +105,76 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4144e3565bb574fb9c83860560243e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tile
-  upNeighbours: []
-  downNeighbours: []
-  leftNeighbours: []
-  rightNeighbours: []
+  upNeighbours:
+  - {fileID: -7448276452102739702, guid: ec8b08b9399c13d4084abdecb10e395e, type: 3}
+  - {fileID: -6247416355258616173, guid: bf276f68671ab6441ad2bb73328151e0, type: 3}
+  - {fileID: 6167215267455936881, guid: 4fcdf7ec49e6c5f42a7412db69a9756a, type: 3}
+  - {fileID: 509560231257125395, guid: 917b7236c03c1de46b5b1e7ee91ff39a, type: 3}
+  - {fileID: -1110273973433543102, guid: 826f3631c34b80242bc1cfb8580c8ef2, type: 3}
+  downNeighbours:
+  - {fileID: 7358306117937083893, guid: edd031dac4c12f14daa54bd0226d969f, type: 3}
+  - {fileID: -7713584289210454324, guid: 91614f22ad2732040ac7ebe8056b12f0, type: 3}
+  - {fileID: -8801249495843898051, guid: 97fbee3938af8f44c89ee2d7c0ec96c2, type: 3}
+  - {fileID: -5138473603677047960, guid: 3d82ea1816ea48a4dae85fefca6832f6, type: 3}
+  - {fileID: 3740758139273597108, guid: 2893ad7ece7e80c48a739b6520c99a01, type: 3}
+  - {fileID: 7116991955024319697, guid: d2ae57ea518aca14fa3659fd0c7f41ec, type: 3}
+  - {fileID: 606207548596226909, guid: 7ae0250118074944e861762ee27fd25f, type: 3}
+  - {fileID: -1110273973433543102, guid: 826f3631c34b80242bc1cfb8580c8ef2, type: 3}
+  - {fileID: -7241122874204543868, guid: 061967183a0555e4abc9d3e7532bf42d, type: 3}
+  - {fileID: -8762821702585776792, guid: d357c957aef95284a8e3790084682b69, type: 3}
+  leftNeighbours:
+  - {fileID: -7513639863654537687, guid: fe13ff5c9a9958a4d9e773ab680b2cc2, type: 3}
+  - {fileID: 3871013564495111099}
+  rightNeighbours:
+  - {fileID: 1511731378355178022, guid: 24ed3cab69e23e44a9d9d5666f943b12, type: 3}
+  - {fileID: 3871013564495111099}
   uSocket: 3
   dSocket: 0
   lSocket: 15
   rSocket: 15
+--- !u!61 &8875798862988478484
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2329902007386725149}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0

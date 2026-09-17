@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 337731059666226783}
   - component: {fileID: 315554726129130738}
   - component: {fileID: 3740758139273597108}
+  - component: {fileID: 623946557262229570}
   m_Layer: 0
   m_Name: GrassSand_TL_Corner
   m_TagString: ground
@@ -129,13 +130,54 @@ MonoBehaviour:
   - {fileID: -5955043846424238710, guid: d4733b6c4f904414baf91e714beca7ef, type: 3}
   rightNeighbours:
   - {fileID: 7358306117937083893, guid: edd031dac4c12f14daa54bd0226d969f, type: 3}
-  - {fileID: -6247416355258616173, guid: bf276f68671ab6441ad2bb73328151e0, type: 3}
-  - {fileID: 648392604390049052, guid: 706ee92ac6d8e1b4085c7c9350f7c799, type: 3}
-  - {fileID: -6886105235175597560, guid: b203bd8516c654845935febe81ab2b40, type: 3}
-  - {fileID: 509560231257125395, guid: 917b7236c03c1de46b5b1e7ee91ff39a, type: 3}
   - {fileID: 7116991955024319697, guid: d2ae57ea518aca14fa3659fd0c7f41ec, type: 3}
-  - {fileID: -5955043846424238710, guid: d4733b6c4f904414baf91e714beca7ef, type: 3}
   uSocket: 0
   dSocket: 9
   lSocket: 0
   rSocket: 4
+--- !u!61 &623946557262229570
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766444983685987196}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0

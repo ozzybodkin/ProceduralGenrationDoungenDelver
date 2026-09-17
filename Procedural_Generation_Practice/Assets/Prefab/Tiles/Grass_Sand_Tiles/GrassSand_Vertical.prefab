@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2533927736969694521}
   - component: {fileID: 7603027241529989504}
   - component: {fileID: 2978112547541852416}
+  - component: {fileID: -2756652062599613821}
   m_Layer: 0
   m_Name: GrassSand_Vertical
   m_TagString: ground
@@ -104,11 +105,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4144e3565bb574fb9c83860560243e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tile
-  upNeighbours: []
-  downNeighbours: []
-  leftNeighbours: []
-  rightNeighbours: []
+  upNeighbours:
+  - {fileID: 7116991955024319697, guid: d2ae57ea518aca14fa3659fd0c7f41ec, type: 3}
+  - {fileID: 2978112547541852416}
+  downNeighbours:
+  - {fileID: 5536284768630989844, guid: 4b8cd2f84d10c5541bd9530b41d48efb, type: 3}
+  - {fileID: 2978112547541852416}
+  leftNeighbours:
+  - {fileID: -3948884043930187511, guid: 96fe46b01704683499f83ddbb2728d56, type: 3}
+  - {fileID: 648392604390049052, guid: 706ee92ac6d8e1b4085c7c9350f7c799, type: 3}
+  - {fileID: 512116470488327027, guid: 25e95a27af3d6e34089a88e5ea44995d, type: 3}
+  - {fileID: -4602032251718830987, guid: 3c23ad85ed843e84b9a863814a519d6d, type: 3}
+  - {fileID: -3984501429462784783, guid: 0286601a67f57844d9d4c94e4cbf2675, type: 3}
+  rightNeighbours:
+  - {fileID: -7713584289210454324, guid: 91614f22ad2732040ac7ebe8056b12f0, type: 3}
+  - {fileID: -8801249495843898051, guid: 97fbee3938af8f44c89ee2d7c0ec96c2, type: 3}
+  - {fileID: -5138473603677047960, guid: 3d82ea1816ea48a4dae85fefca6832f6, type: 3}
+  - {fileID: 3740758139273597108, guid: 2893ad7ece7e80c48a739b6520c99a01, type: 3}
+  - {fileID: 512116470488327027, guid: 25e95a27af3d6e34089a88e5ea44995d, type: 3}
+  - {fileID: 606207548596226909, guid: 7ae0250118074944e861762ee27fd25f, type: 3}
+  - {fileID: -7513639863654537687, guid: fe13ff5c9a9958a4d9e773ab680b2cc2, type: 3}
+  - {fileID: -7241122874204543868, guid: 061967183a0555e4abc9d3e7532bf42d, type: 3}
+  - {fileID: 7371764378151589386, guid: ebeeb26cca6b46241a52b13753e3f8b6, type: 3}
   uSocket: 10
   dSocket: 10
   lSocket: 1
   rSocket: 0
+--- !u!61 &-2756652062599613821
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1941454563470143694}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0

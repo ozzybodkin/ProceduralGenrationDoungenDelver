@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2322634703183758367}
   - component: {fileID: 3040735643507483784}
   - component: {fileID: 648392604390049052}
+  - component: {fileID: 3282011680600633973}
   m_Layer: 0
   m_Name: Shore Tileset_5
   m_TagString: ground
@@ -104,11 +105,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4144e3565bb574fb9c83860560243e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tile
-  upNeighbours: []
-  downNeighbours: []
-  leftNeighbours: []
-  rightNeighbours: []
+  upNeighbours:
+  - {fileID: 648392604390049052}
+  - {fileID: -6886105235175597560, guid: b203bd8516c654845935febe81ab2b40, type: 3}
+  downNeighbours:
+  - {fileID: 648392604390049052}
+  - {fileID: 509560231257125395, guid: 917b7236c03c1de46b5b1e7ee91ff39a, type: 3}
+  leftNeighbours:
+  - {fileID: -6247416355258616173, guid: bf276f68671ab6441ad2bb73328151e0, type: 3}
+  - {fileID: -6853594737073087255, guid: 0eef8d528c013234e8bacdcf0e436ddf, type: 3}
+  - {fileID: -7580154264934663287, guid: b5f8c607d43d48247bade215129bdb85, type: 3}
+  - {fileID: 6167215267455936881, guid: 4fcdf7ec49e6c5f42a7412db69a9756a, type: 3}
+  - {fileID: 7371764378151589386, guid: ebeeb26cca6b46241a52b13753e3f8b6, type: 3}
+  rightNeighbours:
+  - {fileID: -3948884043930187511, guid: 96fe46b01704683499f83ddbb2728d56, type: 3}
+  - {fileID: -6853594737073087255, guid: 0eef8d528c013234e8bacdcf0e436ddf, type: 3}
+  - {fileID: 2978112547541852416, guid: 391f9b1cf04040844b3012d3560dabc2, type: 3}
+  - {fileID: -4602032251718830987, guid: 3c23ad85ed843e84b9a863814a519d6d, type: 3}
+  - {fileID: -3984501429462784783, guid: 0286601a67f57844d9d4c94e4cbf2675, type: 3}
   uSocket: 8
   dSocket: 8
   lSocket: 3
   rSocket: 1
+--- !u!61 &3282011680600633973
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5192936342055263136}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 0.9827255, y: 0.9827255}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0

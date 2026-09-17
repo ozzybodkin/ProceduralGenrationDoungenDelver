@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5200786444208166253}
   - component: {fileID: 341714802380839233}
   - component: {fileID: -5955043846424238710}
+  - component: {fileID: -3895777291179509086}
   m_Layer: 0
   m_Name: Pond_Vertical_Right
   m_TagString: water
@@ -104,11 +105,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca4144e3565bb574fb9c83860560243e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tile
-  upNeighbours: []
-  downNeighbours: []
-  leftNeighbours: []
-  rightNeighbours: []
+  upNeighbours:
+  - {fileID: -5955043846424238710}
+  downNeighbours:
+  - {fileID: 1511731378355178022, guid: 24ed3cab69e23e44a9d9d5666f943b12, type: 3}
+  - {fileID: -5955043846424238710}
+  leftNeighbours:
+  - {fileID: -6247416355258616173, guid: bf276f68671ab6441ad2bb73328151e0, type: 3}
+  - {fileID: -6853594737073087255, guid: 0eef8d528c013234e8bacdcf0e436ddf, type: 3}
+  - {fileID: -7580154264934663287, guid: b5f8c607d43d48247bade215129bdb85, type: 3}
+  - {fileID: 6167215267455936881, guid: 4fcdf7ec49e6c5f42a7412db69a9756a, type: 3}
+  - {fileID: 7371764378151589386, guid: ebeeb26cca6b46241a52b13753e3f8b6, type: 3}
+  rightNeighbours:
+  - {fileID: -7713584289210454324, guid: 91614f22ad2732040ac7ebe8056b12f0, type: 3}
+  - {fileID: -8801249495843898051, guid: 97fbee3938af8f44c89ee2d7c0ec96c2, type: 3}
+  - {fileID: -5138473603677047960, guid: 3d82ea1816ea48a4dae85fefca6832f6, type: 3}
+  - {fileID: 3740758139273597108, guid: 2893ad7ece7e80c48a739b6520c99a01, type: 3}
+  - {fileID: 512116470488327027, guid: 25e95a27af3d6e34089a88e5ea44995d, type: 3}
+  - {fileID: 606207548596226909, guid: 7ae0250118074944e861762ee27fd25f, type: 3}
+  - {fileID: -7513639863654537687, guid: fe13ff5c9a9958a4d9e773ab680b2cc2, type: 3}
+  - {fileID: -7241122874204543868, guid: 061967183a0555e4abc9d3e7532bf42d, type: 3}
+  - {fileID: 7371764378151589386, guid: ebeeb26cca6b46241a52b13753e3f8b6, type: 3}
   uSocket: 14
   dSocket: 14
   lSocket: 3
   rSocket: 0
+--- !u!61 &-3895777291179509086
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2079242243873592766}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
