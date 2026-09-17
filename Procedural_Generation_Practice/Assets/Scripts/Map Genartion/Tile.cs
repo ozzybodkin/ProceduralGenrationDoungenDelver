@@ -6,10 +6,11 @@ using System.Linq;
 
 public class Tile : MonoBehaviour
 {
+
     public Tile[] upNeighbours;
     public Tile[] downNeighbours;
     public Tile[] leftNeighbours;
-    public Tile[] rightNeighbours;
+    public Tile[] rightNeighbours ;
 
     public int uSocket;
     public int dSocket;
@@ -60,4 +61,11 @@ public class Tile : MonoBehaviour
         rightNeighbours = rightNeighbourList.ToArray();
     }
 
+    public void ClearArrays()
+    {
+        upNeighbours = Array.Empty<Tile>();
+        downNeighbours= Array.Empty<Tile>();
+        leftNeighbours= Array.Empty<Tile>();
+        rightNeighbours= Array.Empty<Tile>();
+    }
 }

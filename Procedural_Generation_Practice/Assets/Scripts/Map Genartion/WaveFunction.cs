@@ -49,13 +49,13 @@ public class WaveFunction : MonoBehaviour
 
         float dimensionsF = (float)dimensions * dimensions;
 
-        maxNumTown = Mathf.RoundToInt(dimensionsF * 0.1f);
+        maxNumTown = Mathf.RoundToInt(dimensionsF * 0.05f);
 
-        maxNumGround = Mathf.RoundToInt(dimensionsF * 0.5f);
+        maxNumGround = Mathf.RoundToInt(dimensionsF * 0.6f);
 
         maxNumWater = Mathf.RoundToInt(dimensionsF * 0.3f);
 
-        maxNumMarket = Mathf.RoundToInt(dimensionsF * 0.1f);
+        maxNumMarket = Mathf.RoundToInt(dimensionsF * 0.05f);
 
         int numTiles = maxNumTown + maxNumGround + maxNumMarket + maxNumWater;
         int area = dimensions * dimensions;
@@ -78,11 +78,21 @@ public class WaveFunction : MonoBehaviour
         {
             currentScene = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(currentScene);
+
+            for (int i = 0; i < tileObjects.Length; i++)
+            {
+                tileObjects[i].ClearArrays();
+            }
         }
     }
 
     private void InitilizeGrid()
     {
+        for (int i = 0; i < tileObjects.Length; i++)
+        {
+            tileObjects[i].ClearArrays();
+        }
+
         Camera.main.transform.position = new Vector3(dimensions/2, dimensions/2, -10);
         Camera.main.orthographicSize = dimensions/2 + 1;
 
@@ -153,6 +163,7 @@ public class WaveFunction : MonoBehaviour
             if (numTown == maxNumTown)
             {
                 townTilesFull = true;
+                Debug.Log("Town Full");
             }
         }
         else if (foundTile.tag == "ground")
@@ -161,6 +172,7 @@ public class WaveFunction : MonoBehaviour
             if (numGround == maxNumGround)
             {
                 groundTilesFull = true;
+                Debug.Log("Ground Full");
             }
         }
         else if (foundTile.tag == "market")
@@ -169,6 +181,7 @@ public class WaveFunction : MonoBehaviour
             if (numMarket == maxNumMarket)
             {
                 marketTilesFull = true;
+                Debug.Log("Market Full");
             }
         }
         else if (foundTile.tag == "water")
@@ -177,6 +190,7 @@ public class WaveFunction : MonoBehaviour
             if (numWater == maxNumWater)
             {
                 waterTilesFull = true;
+                Debug.Log("Water Full");
             }
         }
 
@@ -269,8 +283,6 @@ public class WaveFunction : MonoBehaviour
                         CheckValidity(options, validOptions);
                     }
 
-                    Tile[] newTileList = new Tile[options.Count];
-
                     if (townTilesFull)
                     {
                         for (int i = 0; i < options.Count; i++)
@@ -314,6 +326,8 @@ public class WaveFunction : MonoBehaviour
                             }
                         }
                     }
+
+                    Tile[] newTileList = new Tile[options.Count];
 
                     for (int i = 0; i < options.Count; i++)
                     {
