@@ -51,8 +51,6 @@ public class Tile : MonoBehaviour
             {   
                 rightNeighbourList.Add(waveFunction.tileObjects[i]);
             }
-
-            Debug.Log("worked");
         }
 
         upNeighbours = upNeighboursList.ToArray();
