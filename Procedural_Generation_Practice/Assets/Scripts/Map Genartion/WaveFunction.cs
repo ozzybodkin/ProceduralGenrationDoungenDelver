@@ -51,6 +51,8 @@ public class WaveFunction : MonoBehaviour
     private List<TilePercent> fullTileTypes = new List<TilePercent>();
     private List<TilePercent> notFullTileTypes = new List<TilePercent>();
 
+    public int failSafeCount = 0;
+
     private void Awake()
     {
         gridComponents = new List<Cell>();
@@ -78,7 +80,6 @@ public class WaveFunction : MonoBehaviour
 
         water.maxNumTiles = Mathf.RoundToInt(dimensionsF * 0.1f);
 
-        //market.maxNumTiles = Mathf.RoundToInt(dimensionsF * 0.02);
         market.maxNumTiles = Mathf.RoundToInt(dimensionsF * 0.02f);
 
         notFullTileTypes.Add(town);
@@ -179,53 +180,140 @@ public class WaveFunction : MonoBehaviour
         CollapseCell(tempGrid);
     }
 
-    private void AdjustPercentage(List<Cell> tempGrid)
+    private void AdjustPercentage()
     {
+        failSafeCount++;
         switch (fullTileTypes.Count)
         {
             case 0:
-                break;
-                
-            case 1:
-                break;
-
-            case 2:
-                break;
-
-            case 3:
-                int randomeIndex = UnityEngine.Random.Range(0,fullTileTypes.Count);
-                TilePercent full = fullTileTypes[randomeIndex];
-                full.tileTypeFull = false;
+                Debug.Log("Case0");
+                int randomeIndex = UnityEngine.Random.Range(0, notFullTileTypes.Count);
+                Debug.Log(randomeIndex);
+                TilePercent full = notFullTileTypes[randomeIndex];
                 full.maxNumTiles++;
-                fullTileTypes[randomeIndex] = full;
-                notFullTileTypes.Add(fullTileTypes[randomeIndex]);
-                fullTileTypes.Remove(fullTileTypes[randomeIndex]);
+                notFullTileTypes[randomeIndex] = full;
 
-                TilePercent notFull = notFullTileTypes[0];
+                int randomIndexTwo = UnityEngine.Random.Range(0, notFullTileTypes.Count);
+                TilePercent notFull = notFullTileTypes[randomIndexTwo];
                 notFull.maxNumTiles--;
-                notFullTileTypes[0] = notFull;
+                notFullTileTypes[randomIndexTwo] = notFull;
 
                 if (notFull.maxNumTiles == notFull.numTiles)
                 {
                     notFull.tileTypeFull = true;
-                    fullTileTypes.Add(notFullTileTypes[0]);
-                    notFullTileTypes.Remove(notFullTileTypes[0]);
+                    fullTileTypes.Add(notFullTileTypes[randomIndexTwo]);
+                    notFullTileTypes.Remove(notFullTileTypes[randomIndexTwo]);
                 }
 
-                CollapseCell(tempGrid);
+                //CollapseCell(tempGrid);
+                break;
+                
+            case 1:
+                Debug.Log("Case1");
+                TilePercent full1 = fullTileTypes[0];
+                full1.tileTypeFull = false;
+                full1.maxNumTiles++;
+                fullTileTypes[0] = full1;
+
+                int randomIndexFull1 = UnityEngine.Random.Range(0, notFullTileTypes.Count);
+                Debug.Log(randomIndexFull1);
+                TilePercent notFull1 = notFullTileTypes[randomIndexFull1];
+                notFull1.maxNumTiles--;
+                notFullTileTypes[randomIndexFull1] = notFull1;
+
+                notFullTileTypes.Remove(notFullTileTypes[randomIndexFull1]);
+
+
+                if (notFull1.maxNumTiles == notFull1.numTiles)
+                {
+                    notFull1.tileTypeFull = true;
+                    fullTileTypes.Add(notFullTileTypes[randomIndexFull1]);
+                }
+
+                notFullTileTypes.Add(fullTileTypes[0]);
+                fullTileTypes.Remove(fullTileTypes[0]);
+
+                //CollapseCell(tempGrid);
+                break;
+
+            case 2:
+                Debug.Log("Case2");
+                int randomeIndex2 = UnityEngine.Random.Range(0, fullTileTypes.Count);
+                TilePercent full2 = fullTileTypes[randomeIndex2];
+                full2.tileTypeFull = false;
+                full2.maxNumTiles++;
+                fullTileTypes[randomeIndex2] = full2;
+
+                int randomIndexFull2 = UnityEngine.Random.Range(0, notFullTileTypes.Count);
+                TilePercent notFull2 = notFullTileTypes[randomIndexFull2];
+                notFull2.maxNumTiles--;
+                notFullTileTypes[randomIndexFull2] = notFull2;
+
+                notFullTileTypes.Remove(notFullTileTypes[randomIndexFull2]);
+
+                if (notFull2.maxNumTiles == notFull2.numTiles)
+                {
+                    notFull2.tileTypeFull = true;
+                    fullTileTypes.Add(notFullTileTypes[randomIndexFull2]);
+                }
+
+                notFullTileTypes.Add(fullTileTypes[randomeIndex2]);
+                fullTileTypes.Remove(fullTileTypes[randomeIndex2]);
+
+                //CollapseCell(tempGrid);
+                break;
+
+            case 3:
+                Debug.Log("Case3");
+                int randomeIndex3 = UnityEngine.Random.Range(0, fullTileTypes.Count);
+                TilePercent full3 = fullTileTypes[randomeIndex3];
+                full3.tileTypeFull = false;
+                full3.maxNumTiles++;
+                fullTileTypes[randomeIndex3] = full3;
+                fullTileTypes.Remove(fullTileTypes[randomeIndex3]);
+
+                TilePercent notFull3 = notFullTileTypes[0];
+                notFull3.maxNumTiles--;
+                notFullTileTypes[0] = notFull3;
+
+                notFullTileTypes.Remove(notFullTileTypes[0]);
+
+                if (notFull3.maxNumTiles == notFull3.numTiles)
+                {
+                    notFull3.tileTypeFull = true;
+                    fullTileTypes.Add(notFullTileTypes[0]);
+                }
+
+                notFullTileTypes.Add(fullTileTypes[randomeIndex3]);
+
+                //CollapseCell(tempGrid);
                 break;
 
             case 4:
-                break;
+                Debug.Log("Case 4");
+                int randomeIndex4 = UnityEngine.Random.Range(0, fullTileTypes.Count);
+                TilePercent full4 = fullTileTypes[randomeIndex4];
+                full4.tileTypeFull = false;
+                full4.maxNumTiles++;
+                fullTileTypes[randomeIndex4] = full4;
+                notFullTileTypes.Add(fullTileTypes[randomeIndex4]);
+                fullTileTypes.Remove(fullTileTypes[randomeIndex4]);
 
-            default:
-                CollapseCell(tempGrid);
+                //CollapseCell(tempGrid);
                 break;
         }
+        //TestFunction();
+        StartCoroutine(CheckEntropy());
+    }
+
+    private void TestFunction()
+    {
+        Debug.Log("Test");
     }
 
     private void CollapseCell(List<Cell> tempGrid)
     {
+        Debug.Log("failsafe count"+failSafeCount);
         List<Cell> unCollapsedCells = new List<Cell>(tempGrid);
         unCollapsedCells.RemoveAll(c => c.collapsed);
 
@@ -240,13 +328,19 @@ public class WaveFunction : MonoBehaviour
         {
             CollapseCell(tempGrid);
         }
-        //else if (randSelectedTile == 0)
-        //{
-            //AdjustPercentage(tempGrid);   
-            //return;
-        //}
+        else if (cellToCollapse.possibleTiles.Length == 0)
+        {
+            Debug.Log("FullTypeNumOne" + fullTileTypes.Count);
+            Debug.Log("NotFullTypeNumOne" + notFullTileTypes.Count);
+            unCollapsedCells = new List<Cell>();
+            AdjustPercentage();
+            Debug.Log("failSafe");
+            Debug.Log("FullTypeNumTwo" + fullTileTypes.Count);
+            Debug.Log("NotFullTypeNumTwo" + notFullTileTypes.Count);
+            return;
+        }
 
-        Tile selectedTile = cellToCollapse.possibleTiles[UnityEngine.Random.Range(0, randSelectedTile)];
+        Tile selectedTile = cellToCollapse.possibleTiles[randSelectedTile];
 
         cellToCollapse.possibleTiles = new Tile[] { selectedTile };
 
@@ -294,11 +388,11 @@ public class WaveFunction : MonoBehaviour
         }
         else if (foundTile.tag == "water")
         {
-            //numWater++;
+            numWater++;
             water.numTiles++;
             if (water.numTiles == water.maxNumTiles)
             {
-                //waterTilesFull = true;
+                waterTilesFull = true;
                 water.tileTypeFull = true;
                 fullTileTypes.Add(water);
                 notFullTileTypes.Remove(water);
@@ -395,7 +489,7 @@ public class WaveFunction : MonoBehaviour
                         CheckValidity(options, validOptions);
                     }
 
-                    if (townTilesFull)
+                    if (town.tileTypeFull)
                     {
                         for (int i = 0; i < options.Count; i++)
                         {
@@ -406,7 +500,7 @@ public class WaveFunction : MonoBehaviour
                         }
                     }
 
-                    if (groundTilesFull)
+                    if (ground.tileTypeFull)
                     {
                         for (int i = 0; i < options.Count; i++)
                         {
@@ -417,7 +511,7 @@ public class WaveFunction : MonoBehaviour
                         }
                     }
 
-                    if (waterTilesFull)
+                    if (water.tileTypeFull)
                     {
                         for (int i = 0; i < options.Count; i++)
                         {
@@ -428,7 +522,7 @@ public class WaveFunction : MonoBehaviour
                         }
                     }
 
-                    if (marketTilesFull)
+                    if (market.tileTypeFull)
                     {
                         for (int i = 0; i < options.Count; i++)
                         {
