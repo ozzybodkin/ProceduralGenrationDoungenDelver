@@ -558,6 +558,8 @@ public class WaveFunction : MonoBehaviour
         }
         else
         {
+            Tile placePlayerHere = theboard.Find(obj => obj != null && obj.CompareTag("ground"));
+            activePlayer.transform.position = placePlayerHere.transform.position;
             playerController.mapGenerated = true;
         }
     }
