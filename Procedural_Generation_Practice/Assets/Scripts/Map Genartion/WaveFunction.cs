@@ -27,33 +27,16 @@ public class WaveFunction : MonoBehaviour
 
     private int currentScene;
 
-    private int iterations = 0;
-
     private TilePercent town;
     private TilePercent ground;
     private TilePercent water;
     private TilePercent market;
 
-    private int numTown = 0;
-    private int numGround = 0;
-    private int numMarket = 0;
-    private int numWater = 0;
-
-    private int maxNumTown;
-    private int maxNumGround;
-    private int maxNumWater;
-    private int maxNumMarket;
-
-    private bool townTilesFull = false;
-    private bool groundTilesFull = false;
-    private bool waterTilesFull = false;
-    private bool marketTilesFull = false;
     private List<TilePercent> fullTileTypes = new List<TilePercent>();
     private List<TilePercent> notFullTileTypes = new List<TilePercent>();
     private List<Tile>theboard = new List<Tile>();
 
     private int numCells0Entropy = 0;
-    private bool slowDown = false;
 
     private void Awake()
     {
@@ -68,21 +51,13 @@ public class WaveFunction : MonoBehaviour
 
         float dimensionsF = (float)dimensions * dimensions;
 
-        //maxNumTown = Mathf.RoundToInt(dimensionsF * 0.05f);
+        town.maxNumTiles = Mathf.RoundToInt(dimensionsF * 0.03f);
 
-        //maxNumGround = Mathf.RoundToInt(dimensionsF * 0.8f);
-
-        //maxNumWater = Mathf.RoundToInt(dimensionsF * 0.1f);
-
-        //maxNumMarket = Mathf.RoundToInt(dimensionsF * 0.05f);
-
-        town.maxNumTiles = Mathf.RoundToInt(dimensionsF * 0.05f);
-
-        ground.maxNumTiles = Mathf.RoundToInt(dimensionsF * 0.83f);
+        ground.maxNumTiles = Mathf.RoundToInt(dimensionsF * 0.86f);
 
         water.maxNumTiles = Mathf.RoundToInt(dimensionsF * 0.1f);
 
-        market.maxNumTiles = Mathf.RoundToInt(dimensionsF * 0.02f);
+        market.maxNumTiles = Mathf.RoundToInt(dimensionsF * 0.01f);
 
         notFullTileTypes.Add(town);
         notFullTileTypes.Add(ground);
@@ -95,18 +70,17 @@ public class WaveFunction : MonoBehaviour
         market.numTiles = 0;
 
         int numTiles = town.maxNumTiles + ground.maxNumTiles + market.maxNumTiles + water.maxNumTiles;
-        //int numTiles = maxNumTown + maxNumGround + maxNumMarket + maxNumWater;
         int area = dimensions * dimensions;
 
         if (numTiles > area)
         {
             int differance = numTiles - area;
-            maxNumGround -= differance;
+            ground.maxNumTiles -= differance;
         }
         else if (numTiles < area)
         {
             int differance = area - numTiles;
-            maxNumGround += differance;
+            ground.maxNumTiles += differance;
         }
     }
 
@@ -296,7 +270,6 @@ public class WaveFunction : MonoBehaviour
                 fullTileTypes.Remove(fullTileTypes[randomeIndex4]);
                 break;
         }
-        slowDown = true;
         StartCoroutine(CheckEntropy());
         return;
     }
@@ -382,11 +355,9 @@ public class WaveFunction : MonoBehaviour
         }
         else if (foundTile.tag == "water")
         {
-            numWater++;
             water.numTiles++;
             if (water.numTiles == water.maxNumTiles)
             {
-                waterTilesFull = true;
                 water.tileTypeFull = true;
                 fullTileTypes.Add(water);
                 notFullTileTypes.Remove(water);
@@ -548,8 +519,6 @@ public class WaveFunction : MonoBehaviour
         }
 
         gridComponents = newGeneartionCell;
-        //iterations++;
-        Debug.Log(iterations);
         Debug.Log(theboard.Count);
 
         if (theboard.Count < dimensions * dimensions)

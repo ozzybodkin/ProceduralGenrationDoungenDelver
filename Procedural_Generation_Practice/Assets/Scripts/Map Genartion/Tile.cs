@@ -10,7 +10,7 @@ public class Tile : MonoBehaviour
     public Tile[] upNeighbours;
     public Tile[] downNeighbours;
     public Tile[] leftNeighbours;
-    public Tile[] rightNeighbours ;
+    public Tile[] rightNeighbours;
 
     public int uSocket;
     public int dSocket;
