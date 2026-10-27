@@ -1,4 +1,5 @@
 The source journal is in the wiki section of the github repository 
+Ignore the source journel.md file that was an accident
 
 you can regenerate the map by pressing the r key
 
