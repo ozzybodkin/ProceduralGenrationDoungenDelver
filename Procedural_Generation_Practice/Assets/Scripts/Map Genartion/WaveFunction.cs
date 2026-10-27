@@ -31,6 +31,7 @@ public class WaveFunction : MonoBehaviour
     private TilePercent ground;
     private TilePercent water;
     private TilePercent market;
+    private TilePercent doungeon;
 
     private List<TilePercent> fullTileTypes = new List<TilePercent>();
     private List<TilePercent> notFullTileTypes = new List<TilePercent>();
@@ -53,23 +54,27 @@ public class WaveFunction : MonoBehaviour
 
         town.maxNumTiles = Mathf.RoundToInt(dimensionsF * 0.03f);
 
-        ground.maxNumTiles = Mathf.RoundToInt(dimensionsF * 0.86f);
+        ground.maxNumTiles = Mathf.RoundToInt(dimensionsF * 0.80f);
 
         water.maxNumTiles = Mathf.RoundToInt(dimensionsF * 0.1f);
 
         market.maxNumTiles = Mathf.RoundToInt(dimensionsF * 0.01f);
 
+        doungeon.maxNumTiles = Mathf.RoundToInt(dimensionsF * 0.06f);
+
         notFullTileTypes.Add(town);
         notFullTileTypes.Add(ground);
         notFullTileTypes.Add(water);
         notFullTileTypes.Add(market);
+        notFullTileTypes.Add(doungeon);
 
         town.numTiles = 0;
         ground.numTiles = 0;
         water.numTiles = 0;
         market.numTiles = 0;
+        doungeon.numTiles = 0;
 
-        int numTiles = town.maxNumTiles + ground.maxNumTiles + market.maxNumTiles + water.maxNumTiles;
+        int numTiles = town.maxNumTiles + ground.maxNumTiles + market.maxNumTiles + water.maxNumTiles + doungeon.maxNumTiles;
         int area = dimensions * dimensions;
 
         if (numTiles > area)
@@ -316,11 +321,9 @@ public class WaveFunction : MonoBehaviour
         theboard.Add(placedTile);
         if (foundTile.tag == "town")
         {
-            //numTown++;
             town.numTiles++;
             if (town.numTiles == town.maxNumTiles)
             {
-                //townTilesFull = true;
                 town.tileTypeFull = true;
                 fullTileTypes.Add(town);
                 notFullTileTypes.Remove(town);
@@ -329,11 +332,9 @@ public class WaveFunction : MonoBehaviour
         }
         else if (foundTile.tag == "ground")
         {
-            //numGround++;
             ground.numTiles++;
             if (ground.numTiles == ground.maxNumTiles)
             {
-                //groundTilesFull = true;
                 ground.tileTypeFull = true;
                 fullTileTypes.Add(ground);
                 notFullTileTypes.Remove(ground);
@@ -342,11 +343,9 @@ public class WaveFunction : MonoBehaviour
         }
         else if (foundTile.tag == "market")
         {
-            //numMarket++;
             market.numTiles++;
             if (market.numTiles == market.maxNumTiles)
             {
-                //marketTilesFull = true;
                 market.tileTypeFull = true;
                 fullTileTypes.Add(market);
                 notFullTileTypes.Remove(market);
@@ -362,6 +361,17 @@ public class WaveFunction : MonoBehaviour
                 fullTileTypes.Add(water);
                 notFullTileTypes.Remove(water);
                 Debug.Log("Water Full");
+            }
+        }
+        else if (foundTile.tag == "Doungeon")
+        {
+            doungeon.numTiles++;
+            if (doungeon.numTiles == doungeon.maxNumTiles)
+            {
+                doungeon.tileTypeFull = true;
+                fullTileTypes.Add(doungeon);
+                notFullTileTypes.Remove(doungeon);
+                Debug.Log("Doungeon Full");
             }
         }
 
@@ -493,6 +503,17 @@ public class WaveFunction : MonoBehaviour
                         for (int i = 0; i < options.Count; i++)
                         {
                             if (options[i].tag == "market")
+                            {
+                                options.Remove(options[i]);
+                            }
+                        }
+                    }
+
+                    if (doungeon.tileTypeFull)
+                    {
+                        for (int i = 0; i < options.Count; i++)
+                        {
+                            if (options[i].tag == "Doungeon")
                             {
                                 options.Remove(options[i]);
                             }

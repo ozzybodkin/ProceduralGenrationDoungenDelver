@@ -9,6 +9,7 @@ TagManager:
   - town
   - ground
   - mapgen
+  - Doungeon
   layers:
   - Default
   - TransparentFX

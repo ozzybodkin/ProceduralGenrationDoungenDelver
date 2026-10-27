@@ -403,6 +403,9 @@ MonoBehaviour:
   - {fileID: -8762821702585776792, guid: d357c957aef95284a8e3790084682b69, type: 3}
   - {fileID: 7371764378151589386, guid: ebeeb26cca6b46241a52b13753e3f8b6, type: 3}
   - {fileID: -5955043846424238710, guid: d4733b6c4f904414baf91e714beca7ef, type: 3}
+  - {fileID: -1468727433505220896, guid: 35a0fee6d6214ec4dbc770484abfc95e, type: 3}
+  - {fileID: -6309768757857450937, guid: 7317ff81b5e810f468dc93d3306aed69, type: 3}
+  - {fileID: -1309915900169049402, guid: 7d602567fa237934c8927e367e864613, type: 3}
   gridComponents: []
   cellObj: {fileID: 218963756720778184, guid: 6cae964b0f577ae41a8f3344144c438b, type: 3}
   player: {fileID: 7584532866801662252, guid: 3b6ac4f4e9fdd2d4988ed23424aa1cbb, type: 3}
