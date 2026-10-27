@@ -51,7 +51,8 @@ public class WaveFunction : MonoBehaviour
     private List<TilePercent> fullTileTypes = new List<TilePercent>();
     private List<TilePercent> notFullTileTypes = new List<TilePercent>();
 
-    public int failSafeCount = 0;
+    private int numCells0Entropy = 0;
+    private bool slowDown = false;
 
     private void Awake()
     {
@@ -182,7 +183,6 @@ public class WaveFunction : MonoBehaviour
 
     private void AdjustPercentage()
     {
-        failSafeCount++;
         switch (fullTileTypes.Count)
         {
             case 0:
@@ -204,8 +204,7 @@ public class WaveFunction : MonoBehaviour
                     fullTileTypes.Add(notFullTileTypes[randomIndexTwo]);
                     notFullTileTypes.Remove(notFullTileTypes[randomIndexTwo]);
                 }
-
-                //CollapseCell(tempGrid);
+                
                 break;
                 
             case 1:
@@ -221,19 +220,16 @@ public class WaveFunction : MonoBehaviour
                 notFull1.maxNumTiles--;
                 notFullTileTypes[randomIndexFull1] = notFull1;
 
-                notFullTileTypes.Remove(notFullTileTypes[randomIndexFull1]);
-
-
                 if (notFull1.maxNumTiles == notFull1.numTiles)
                 {
                     notFull1.tileTypeFull = true;
                     fullTileTypes.Add(notFullTileTypes[randomIndexFull1]);
                 }
 
+                notFullTileTypes.Remove(notFullTileTypes[randomIndexFull1]);
+
                 notFullTileTypes.Add(fullTileTypes[0]);
                 fullTileTypes.Remove(fullTileTypes[0]);
-
-                //CollapseCell(tempGrid);
                 break;
 
             case 2:
@@ -259,8 +255,6 @@ public class WaveFunction : MonoBehaviour
 
                 notFullTileTypes.Add(fullTileTypes[randomeIndex2]);
                 fullTileTypes.Remove(fullTileTypes[randomeIndex2]);
-
-                //CollapseCell(tempGrid);
                 break;
 
             case 3:
@@ -285,8 +279,6 @@ public class WaveFunction : MonoBehaviour
                 }
 
                 notFullTileTypes.Add(fullTileTypes[randomeIndex3]);
-
-                //CollapseCell(tempGrid);
                 break;
 
             case 4:
@@ -298,23 +290,21 @@ public class WaveFunction : MonoBehaviour
                 fullTileTypes[randomeIndex4] = full4;
                 notFullTileTypes.Add(fullTileTypes[randomeIndex4]);
                 fullTileTypes.Remove(fullTileTypes[randomeIndex4]);
-
-                //CollapseCell(tempGrid);
                 break;
         }
-        //TestFunction();
+        slowDown = true;
         StartCoroutine(CheckEntropy());
+        return;
     }
 
-    private void TestFunction()
+    private void SlowDown(List<Cell> tempGrid)
     {
-        Debug.Log("Test");
+        CollapseCell(tempGrid);
     }
 
     private void CollapseCell(List<Cell> tempGrid)
     {
-        Debug.Log("failsafe count"+failSafeCount);
-        List<Cell> unCollapsedCells = new List<Cell>(tempGrid);
+        List<Cell> unCollapsedCells = new(tempGrid);
         unCollapsedCells.RemoveAll(c => c.collapsed);
 
         int randIndex = UnityEngine.Random.Range(0, tempGrid.Count);
@@ -326,18 +316,23 @@ public class WaveFunction : MonoBehaviour
 
         if (randSelectedTile > cellToCollapse.possibleTiles.Length)
         {
-            CollapseCell(tempGrid);
+            StartCoroutine(CheckEntropy());
+            return;
         }
         else if (cellToCollapse.possibleTiles.Length == 0)
         {
-            Debug.Log("FullTypeNumOne" + fullTileTypes.Count);
-            Debug.Log("NotFullTypeNumOne" + notFullTileTypes.Count);
-            unCollapsedCells = new List<Cell>();
-            AdjustPercentage();
-            Debug.Log("failSafe");
-            Debug.Log("FullTypeNumTwo" + fullTileTypes.Count);
-            Debug.Log("NotFullTypeNumTwo" + notFullTileTypes.Count);
-            return;
+            numCells0Entropy++;
+            if (numCells0Entropy == unCollapsedCells.Count)
+            {
+                unCollapsedCells = new List<Cell>();
+                AdjustPercentage();
+                return;
+            }
+            else
+            {
+                StartCoroutine(CheckEntropy());
+                return;
+            }
         }
 
         Tile selectedTile = cellToCollapse.possibleTiles[randSelectedTile];
@@ -401,6 +396,7 @@ public class WaveFunction : MonoBehaviour
         }
 
             UpdateGeneartion();
+        return;
     }
 
     private void UpdateGeneartion()
