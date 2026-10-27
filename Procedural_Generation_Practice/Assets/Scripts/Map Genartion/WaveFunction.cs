@@ -252,13 +252,12 @@ public class WaveFunction : MonoBehaviour
                 notFull3.maxNumTiles--;
                 notFullTileTypes[0] = notFull3;
 
-                notFullTileTypes.Remove(notFullTileTypes[0]);
-
                 if (notFull3.maxNumTiles == notFull3.numTiles)
                 {
                     notFull3.tileTypeFull = true;
                     fullTileTypes.Add(notFullTileTypes[0]);
                 }
+                notFullTileTypes.Remove(notFullTileTypes[0]);
 
                 notFullTileTypes.Add(fullTileTypes[randomeIndex3]);
                 fullTileTypes.Remove(fullTileTypes[randomeIndex3]);
@@ -551,6 +550,7 @@ public class WaveFunction : MonoBehaviour
             Tile placePlayerHere = theboard.Find(obj => obj != null && obj.CompareTag("ground"));
             activePlayer.transform.position = placePlayerHere.transform.position;
             playerController.mapGenerated = true;
+            playerController.canMove = true;
         }
     }
 

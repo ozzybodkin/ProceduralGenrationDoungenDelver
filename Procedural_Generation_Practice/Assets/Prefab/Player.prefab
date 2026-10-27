@@ -223,6 +223,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: a911c6c7-77e8-475c-9d0b-8811e730c5ac
     m_ActionName: 'PlayerInputMap/Right[/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4758033488114442637}
+        m_TargetAssemblyTypeName: Player_Controller, Assembly-CSharp
+        m_MethodName: SpaceBar
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 84c3a51e-472e-40b2-ba9d-bfdf695fef4d
+    m_ActionName: 'PlayerInputMap/NextTurn[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: PlayerInputMap
@@ -240,3 +256,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8956b305c41fa2b4f874392c083cc08a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player_Controller
+  mapGenerated: 0
+  stamina: 3
+  maxStamina: 3
