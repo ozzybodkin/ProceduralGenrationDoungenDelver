@@ -10,6 +10,8 @@ TagManager:
   - ground
   - mapgen
   - Doungeon
+  - player
+  - DoungeonGen
   layers:
   - Default
   - TransparentFX

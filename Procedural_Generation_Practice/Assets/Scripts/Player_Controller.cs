@@ -8,6 +8,15 @@ public class Player_Controller : MonoBehaviour
 
     public int stamina = 3;
     public int maxStamina = 3;
+
+    private DoungeonGenerator doungeonGen;
+    private GameObject mapGen;
+
+    private void Start()
+    {
+        mapGen = GameObject.FindWithTag("DoungeonGen"); 
+        doungeonGen = mapGen.GetComponent<DoungeonGenerator>();
+    }
     public void Up(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -95,6 +104,11 @@ public class Player_Controller : MonoBehaviour
         if (tag == "water")
         {
             canMove = false;
+        }
+        else if (tag == "Doungeon")
+        {
+            doungeonGen.CreateDoungeon();
+            canMove = true;
         }
         else
         {
