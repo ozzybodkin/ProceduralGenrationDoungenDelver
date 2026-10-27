@@ -50,6 +50,7 @@ public class WaveFunction : MonoBehaviour
     private bool marketTilesFull = false;
     private List<TilePercent> fullTileTypes = new List<TilePercent>();
     private List<TilePercent> notFullTileTypes = new List<TilePercent>();
+    private List<Tile>theboard = new List<Tile>();
 
     private int numCells0Entropy = 0;
     private bool slowDown = false;
@@ -159,7 +160,8 @@ public class WaveFunction : MonoBehaviour
 
         tempGrid.Sort((a, b) => { return a.possibleTiles.Length - b.possibleTiles.Length; });
 
-        int arrLength = tempGrid[0].possibleTiles.Length;
+        int arrLength = tempGrid[0].possibleTiles.Length;  
+
         int stopIndex = default;
 
         for (int i = 1; i < tempGrid.Count; i++)
@@ -245,13 +247,15 @@ public class WaveFunction : MonoBehaviour
                 notFull2.maxNumTiles--;
                 notFullTileTypes[randomIndexFull2] = notFull2;
 
-                notFullTileTypes.Remove(notFullTileTypes[randomIndexFull2]);
+
 
                 if (notFull2.maxNumTiles == notFull2.numTiles)
                 {
                     notFull2.tileTypeFull = true;
                     fullTileTypes.Add(notFullTileTypes[randomIndexFull2]);
                 }
+
+                notFullTileTypes.Remove(notFullTileTypes[randomIndexFull2]);
 
                 notFullTileTypes.Add(fullTileTypes[randomeIndex2]);
                 fullTileTypes.Remove(fullTileTypes[randomeIndex2]);
@@ -264,7 +268,6 @@ public class WaveFunction : MonoBehaviour
                 full3.tileTypeFull = false;
                 full3.maxNumTiles++;
                 fullTileTypes[randomeIndex3] = full3;
-                fullTileTypes.Remove(fullTileTypes[randomeIndex3]);
 
                 TilePercent notFull3 = notFullTileTypes[0];
                 notFull3.maxNumTiles--;
@@ -279,6 +282,7 @@ public class WaveFunction : MonoBehaviour
                 }
 
                 notFullTileTypes.Add(fullTileTypes[randomeIndex3]);
+                fullTileTypes.Remove(fullTileTypes[randomeIndex3]);
                 break;
 
             case 4:
@@ -295,11 +299,6 @@ public class WaveFunction : MonoBehaviour
         slowDown = true;
         StartCoroutine(CheckEntropy());
         return;
-    }
-
-    private void SlowDown(List<Cell> tempGrid)
-    {
-        CollapseCell(tempGrid);
     }
 
     private void CollapseCell(List<Cell> tempGrid)
@@ -340,8 +339,8 @@ public class WaveFunction : MonoBehaviour
         cellToCollapse.possibleTiles = new Tile[] { selectedTile };
 
         Tile foundTile = cellToCollapse.possibleTiles[0];
-        Instantiate(foundTile, cellToCollapse.transform.position, Quaternion.identity);
-
+        Tile placedTile = Instantiate(foundTile, cellToCollapse.transform.position, Quaternion.identity);
+        theboard.Add(placedTile);
         if (foundTile.tag == "town")
         {
             //numTown++;
@@ -395,7 +394,7 @@ public class WaveFunction : MonoBehaviour
             }
         }
 
-            UpdateGeneartion();
+        UpdateGeneartion();
         return;
     }
 
@@ -529,6 +528,12 @@ public class WaveFunction : MonoBehaviour
                         }
                     }
 
+                    if (options.Count <= 0 && theboard.Count < dimensions*dimensions)
+                    {
+                        AdjustPercentage();
+                        return;
+                    }
+
                     Tile[] newTileList = new Tile[options.Count];
 
                     for (int i = 0; i < options.Count; i++)
@@ -543,9 +548,11 @@ public class WaveFunction : MonoBehaviour
         }
 
         gridComponents = newGeneartionCell;
-        iterations++;
+        //iterations++;
+        Debug.Log(iterations);
+        Debug.Log(theboard.Count);
 
-        if (iterations < dimensions * dimensions)
+        if (theboard.Count < dimensions * dimensions)
         {
             StartCoroutine(CheckEntropy());
         }
